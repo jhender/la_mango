@@ -6,7 +6,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.parse.Parse;
+import com.parse.ParseAnalytics;
 import com.parse.ParseObject;
+import com.parse.PushService;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -15,12 +17,20 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //Parse Backend Login
         Parse.initialize(this, "hfhVukFAkDhY90KnLStI5k8phj2gtmaau05nIo5w", "Awt2mfIyP6wXdtjRLSWuyXPngRaOsgKaFNPwljxc");
+        // Also in this method, specify a default Activity to handle push notifications
+        PushService.setDefaultPushCallback(this, MainActivity.class);
 
+        //Parse Test Connection Code. Can remove else it will put an object every single login.
         ParseObject testObject = new ParseObject("TestObject");
         testObject.put("foo", "bar");
         testObject.saveInBackground();
 
+        //Parse Analytics
+        ParseAnalytics.trackAppOpened(getIntent());
+//        ParseAnalytics.trackAppOpenedInBackground(android.content.Intent);
+//        ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
         setContentView(R.layout.activity_main);
     }
