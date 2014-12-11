@@ -27,7 +27,7 @@ import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-//import com.parse.ui.ParseLoginBuilder;
+import com.parse.ui.ParseLoginBuilder;
 
 
 import java.util.List;
@@ -176,8 +176,8 @@ public class HashmapList extends ActionBarActivity {
         }
 
 //        if (item.getItemId() == R.id.action_login) {
-//            ParseLoginBuilder builder = new ParseLoginBuilder(this);
-//            startActivityForResult(builder.build(), LOGIN_ACTIVITY_CODE);
+            ParseLoginBuilder builder = new ParseLoginBuilder(this);
+            startActivityForResult(builder.build(), LOGIN_ACTIVITY_CODE);
 //        }
 
         return super.onOptionsItemSelected(item);
@@ -247,8 +247,8 @@ public class HashmapList extends ActionBarActivity {
             } else {
 //                If we have a network connection but no logged in user, direct
 //                the person to log in or sign up.
-//                ParseLoginBuilder builder = new ParseLoginBuilder(this);
-//                startActivityForResult(builder.build(), LOGIN_ACTIVITY_CODE);
+                ParseLoginBuilder builder = new ParseLoginBuilder(this);
+                startActivityForResult(builder.build(), LOGIN_ACTIVITY_CODE);
             }
         } else {
             // If there is no connection, let the user know the sync didn't
