@@ -1,5 +1,6 @@
 package co.lookingaround.mango;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,6 +24,8 @@ public class MainActivity extends ActionBarActivity {
     private TextView emailTextView;
     private TextView nameTextView;
     private Button loginOrLogoutButton;
+    private Button button1;
+
 
     private ParseUser currentUser;
 
@@ -31,7 +34,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         //Parse Backend Login
-        Parse.initialize(this, "hfhVukFAkDhY90KnLStI5k8phj2gtmaau05nIo5w", "Awt2mfIyP6wXdtjRLSWuyXPngRaOsgKaFNPwljxc");
+//        Parse.initialize(this, "hfhVukFAkDhY90KnLStI5k8phj2gtmaau05nIo5w", "Awt2mfIyP6wXdtjRLSWuyXPngRaOsgKaFNPwljxc");
         // Also in this method, specify a default Activity to handle push notifications
         PushService.setDefaultPushCallback(this, MainActivity.class);
 
@@ -71,6 +74,18 @@ public class MainActivity extends ActionBarActivity {
                 }
             }
         });
+
+
+        button1 = (Button)findViewById(R.id.button);
+        button1.setOnClickListener(new View.OnClickListener()
+        {   public void onClick(View v)
+            {
+                Intent intent = new Intent(MainActivity.this, HashmapList.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 
     @Override
