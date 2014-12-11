@@ -9,7 +9,7 @@ import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseObject;
 import com.parse.PushService;
-
+import com.parse.ui.ParseLoginBuilder;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -52,7 +52,9 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            ParseLoginBuilder builder = new ParseLoginBuilder(MainActivity.this);
+            startActivityForResult(builder.build(), 0);
+//            return true;
         }
 
         return super.onOptionsItemSelected(item);
